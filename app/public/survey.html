@@ -140,7 +140,7 @@
 
         $(document).ready(function () {
 
-            // Question: What does this code do?
+            // collect values from survey
             $(".submit").on("click", function (event) {
                 event.preventDefault();
                 var newCharacter = {
@@ -171,44 +171,45 @@
                         var travelArray = [];
                         var codingArray = [];
                         var famousArray = [];
-                        var totalArray = [];
-                        
+
                         var questionsArray = ["morning", "pizza", "introvert", "environment", "science", "art", "book", "travel", "coding", "famous"];
-                        
+                        // allows to track # users
+                        var numberUsers = data.length;
+
+                        // calculate diff between existing users and current survey results
                         for (i = 0; i < data.length; i++) {
-                            
-                            var diff = newCharacter.morning - (data[i].morning);
+
+                            var diff = Math.abs(newCharacter.morning - (data[i].morning));
                             morningArray.push(diff);
 
-                            
-                            var diff = newCharacter.pizza - (data[i].pizza);
+                            var diff = Math.abs(newCharacter.pizza - (data[i].pizza));
                             pizzaArray.push(diff);
 
-                            var diff = newCharacter.introvert - (data[i].introvert);
+                            var diff = Math.abs(newCharacter.introvert - (data[i].introvert));
                             introvertArray.push(diff);
 
-                            var diff = newCharacter.environment - (data[i].environment);
+                            var diff = Math.abs(newCharacter.environment - (data[i].environment));
                             environmentArray.push(diff);
 
-                            var diff = newCharacter.science - (data[i].science);
-                           scienceArray.push(diff);
+                            var diff = Math.abs(newCharacter.science - (data[i].science));
+                            scienceArray.push(diff);
 
-                            var diff = newCharacter.art - (data[i].art);
+                            var diff = Math.abs(newCharacter.art - (data[i].art));
                             artArray.push(diff);
 
-                            var diff = newCharacter.book - (data[i].book);
+                            var diff = Math.abs(newCharacter.book - (data[i].book));
                             bookArray.push(diff);
 
-                            var diff = newCharacter.travel - (data[i].travel);
+                            var diff = Math.abs(newCharacter.travel - (data[i].travel));
                             travelArray.push(diff);
 
-                            var diff = newCharacter.coding - (data[i].coding);
+                            var diff = Math.abs(newCharacter.coding - (data[i].coding));
                             codingArray.push(diff);
 
-                            var diff = newCharacter.famous - (data[i].famous);
+                            var diff = Math.abs(newCharacter.famous - (data[i].famous));
                             famousArray.push(diff);
-
                         }
+
                         console.log("morning", morningArray);
                         console.log("pizza", pizzaArray);
                         console.log("introvert", introvertArray);
@@ -219,11 +220,32 @@
                         console.log("travel", travelArray);
                         console.log("coding", codingArray);
                         console.log("famous", famousArray);
+
+                        // holds total of all diff for each user
+                        var totalArray = [];
+                                                
+                        // position i = diff users
+                        for (i = 0; i < numberUsers; i++) {
+                            var userTotal = 0;
+
+                            userTotal += morningArray[i];
+                            userTotal += pizzaArray[i];
+                            userTotal += introvertArray[i];
+                            userTotal += environmentArray[i];
+                            userTotal += scienceArray[i];
+                            userTotal += artArray[i];
+                            userTotal += bookArray[i];
+                            userTotal += travelArray[i];
+                            userTotal += codingArray[i];
+                            userTotal += famousArray[i];
+                            totalArray.push(userTotal);
+                            // console.log("totalArray inside loop", totalArray);
+                        }
+                        console.log("totalArray", totalArray);
+
                     }
-                    else {
-                        $("#name").text("There are no users with that name.  Try another search.");
-                        $("#stats").hide();
-                    }
+
+
                 })
 
                 $.post("/api/users", newCharacter)
