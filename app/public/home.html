@@ -49,9 +49,16 @@
                 <div class="card-body">
                     <h2><strong>Name:</strong><span class="name">?</span></h2>
                     <div class="stats">
-                        <h3><strong>Bed:</strong> <span class="bed">?</span></h3>
-                        <h3><strong>Car:</strong> <span class="car">?</span></h3>
-                        <h3><strong>Beverage:</strong> <span class="beverage">?</span></h3>
+                        <h3><strong>Morning(5)/Night(1):</strong> <span class="morning">?</span></h3>
+                        <h3><strong>Pizza:</strong> <span class="pizza">?</span></h3>
+                        <h3><strong>Introver(5)/Extrovert(1):</strong> <span class="introvert">?</span></h3>
+                        <h3><strong>Environment:</strong> <span class="environment">?</span></h3>
+                        <h3><strong>Science(5)/Faith(1):</strong> <span class="science">?</span></h3>
+                        <h3><strong>Art:</strong> <span class="art">?</span></h3>
+                        <h3><strong>Book:</strong> <span class="book">?</span></h3>
+                        <h3><strong>Travel(5)/Home(1):</strong> <span class="travel">?</span></h3>
+                        <h3><strong>Coding:</strong> <span class="coding">?</span></h3>
+                        <h3><strong>Famous(5)/Loved(1):</strong> <span class="famous">?</span></h3>
 
                     </div>
                 </div>
@@ -73,16 +80,16 @@
                     if (data) {
                         $(".stats").show();
                         $(".name").text(data.name),
-                            $(".bed").text(data.bed),
-                            $(".car").text(data.car),
-                            $(".beverage").text(data.beverage),
-                            $(".sunday").text(data.sunday),
-                            $(".sports").text(data.sports),
-                            $(".politics").text(data.politics),
-                            $(".book").text(data.book),
+                            $(".morning").text(data.morning),
                             $(".pizza").text(data.pizza),
-                            $(".dayoff").text(data.dayoff),
-                            $(".color").text(data.color)
+                            $(".introvert").text(data.introvert),
+                            $(".environment").text(data.environment),
+                            $(".science").text(data.science),
+                            $(".art").text(data.art),
+                            $(".book").text(data.book),
+                            $(".travel").text(data.travel),
+                            $(".coding").text(data.coding),
+                            $(".famous").text(data.famous)
                            
                     }
                     else {

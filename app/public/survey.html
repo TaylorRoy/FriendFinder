@@ -22,7 +22,7 @@
         <hr class="my-4">
         <p>It uses Express, Node and JavaScript for the server, and HTML, CSS, jQuery, and Javascript for the frontend.</p>
         <a class="btn btn-primary btn-lg" href="/" role="button">Return to homepage.</a>
-    
+
     </div>
     <form method="POST" role="form">
 
@@ -31,8 +31,8 @@
             <label for="validationTooltip01">First name</label>
             <input type="text" class="name form-control" id="validationTooltip01" placeholder="First name" required>
 
-            <label for="exampleFormControlSelect1">What time do you usually go to bed?</label>
-            <select class="bed form-control" id="exampleFormControlSelect1">
+            <label for="exampleFormControlSelect1">Are you a morning person(5), a night person(1) or in between?</label>
+            <select class="morning form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -41,8 +41,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">What is your dream car?</label>
-            <select class="car form-control" id="exampleFormControlSelect1">
+            <label for="exampleFormControlSelect1">How much do you like pizza?</label>
+            <select class="pizza form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -51,18 +51,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">What is your preferred beverage on Friday evening after a tough week</label>
-            <select class="beverage form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>Dirty Soda</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">What do you do on Sunday?</label>
-            <select class="sunday form-control" id="exampleFormControlSelect1">
+            <label for="exampleFormControlSelect1">Do you consider yourself an introvert(1) or an extrovert(5)?</label>
+            <select class="introvert form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -71,8 +61,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">What is your favorite Utah sports team?</label>
-            <select class="sports form-control" id="exampleFormControlSelect1">
+            <label for="exampleFormControlSelect1">Do you respect the environment?</label>
+            <select class="environment form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -81,8 +71,19 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">How would you describe your political stance?</label>
-            <select class="politics form-control" id="exampleFormControlSelect1">
+            <label for="exampleFormControlSelect1">Do you base your logic and decisions on science and data(5),
+                faith(1) or in between?</label>
+            <select class="science form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">How much do you enjoy art?</label>
+            <select class="art form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -101,8 +102,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">What is your favorite pizza topping?</label>
-            <select class="pizza form-control" id="exampleFormControlSelect1">
+            <label for="exampleFormControlSelect1">Would you rather travel(5), stay home(1) or in between?</label>
+            <select class="travel form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -111,66 +112,128 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">What would you do with a day off?</label>
-            <select class="dayoff form-control" id="exampleFormControlSelect1">
-                <option>Go outside</option>
-                <option>Play video games</option>
-                <option>Go to the city</option>
-                <option>Sleep In</option>
-                <option>What is a day off</option>
+            <label for="exampleFormControlSelect1">How much do you like coding?</label>
+            <select class="coding form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">What is your favorite color?</label>
-            <select class="color form-control" id="exampleFormControlSelect1">
-                <option>Red</option>
-                <option>Blue</option>
-                <option>Green</option>
-                <option>Yellow</option>
-                <option>Other</option>
+            <label for="exampleFormControlSelect1">Would you rather be famous(5) or loved(1) or in between?</label>
+            <select class="famous form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
             </select>
         </div>
         <a class="submit btn btn-primary btn-lg" href="#" role="button">Submit</a>
     </form>
 
-    
+
 
     <script type="text/javascript">
 
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        // Question: What does this code do?
-        $(".submit").on("click", function (event) {
-            event.preventDefault();
-            var newCharacter = {
-                name :$(".name").val().trim(),
-                bed: $(".bed").val().trim(),
-                car: $(".car").val().trim(),
-                beverage: $(".beverage").val().trim(),
-                sunday: $(".sunday").val().trim(),
-                sports: $(".sports").val().trim(),
-                politics: $(".politics").val().trim(),
-                books: $(".book").val().trim(),
-                pizza: $(".pizza").val().trim(),
-                dayoff: $(".dayoff").val().trim(),
-                color: $(".color").val().trim()
-            };
+            // Question: What does this code do?
+            $(".submit").on("click", function (event) {
+                event.preventDefault();
+                var newCharacter = {
+                    name: $(".name").val().trim(),
+                    morning: $(".morning").val().trim(),
+                    pizza: $(".pizza").val().trim(),
+                    introvert: $(".introvert").val().trim(),
+                    environment: $(".environment").val().trim(),
+                    science: $(".science").val().trim(),
+                    art: $(".art").val().trim(),
+                    book: $(".book").val().trim(),
+                    travel: $(".travel").val().trim(),
+                    coding: $(".coding").val().trim(),
+                    famous: $(".famous").val().trim()
+                };
+                // calculate a match
+                $.get("/api/users", function (data) {
+                    if (data) {
+                        var i;
+                        // store difference in seperate arrays
+                        var morningArray = [];
+                        var pizzaArray = [];
+                        var introvertArray = [];
+                        var environmentArray = [];
+                        var scienceArray = [];
+                        var artArray = [];
+                        var bookArray = [];
+                        var travelArray = [];
+                        var codingArray = [];
+                        var famousArray = [];
+                        var totalArray = [];
+                        
+                        var questionsArray = ["morning", "pizza", "introvert", "environment", "science", "art", "book", "travel", "coding", "famous"];
+                        
+                        for (i = 0; i < data.length; i++) {
+                            
+                            var diff = newCharacter.morning - (data[i].morning);
+                            morningArray.push(diff);
 
-            // Question: What does this code do??
-            $.post("/api/users", newCharacter)
-                .then(function (data) {
-                    console.log("survey.html", data);
-                    alert("Adding character...");
-                });
+                            
+                            var diff = newCharacter.pizza - (data[i].pizza);
+                            pizzaArray.push(diff);
+
+                            var diff = newCharacter.introvert - (data[i].introvert);
+                            introvertArray.push(diff);
+
+                            var diff = newCharacter.environment - (data[i].environment);
+                            environmentArray.push(diff);
+
+                            var diff = newCharacter.science - (data[i].science);
+                           scienceArray.push(diff);
+
+                            var diff = newCharacter.art - (data[i].art);
+                            artArray.push(diff);
+
+                            var diff = newCharacter.book - (data[i].book);
+                            bookArray.push(diff);
+
+                            var diff = newCharacter.travel - (data[i].travel);
+                            travelArray.push(diff);
+
+                            var diff = newCharacter.coding - (data[i].coding);
+                            codingArray.push(diff);
+
+                            var diff = newCharacter.famous - (data[i].famous);
+                            famousArray.push(diff);
+
+                        }
+                        console.log("morning", morningArray);
+                        console.log("pizza", pizzaArray);
+                        console.log("introvert", introvertArray);
+                        console.log("environment", environmentArray);
+                        console.log("science", scienceArray);
+                        console.log("art", artArray);
+                        console.log("book", bookArray);
+                        console.log("travel", travelArray);
+                        console.log("coding", codingArray);
+                        console.log("famous", famousArray);
+                    }
+                    else {
+                        $("#name").text("There are no users with that name.  Try another search.");
+                        $("#stats").hide();
+                    }
+                })
+
+                $.post("/api/users", newCharacter)
+                    .then(function (data) {
+                        console.log("survey.html", data);
+                        alert("Adding character...");
+                    });
+            });
         });
-});
-</script>
-
-<script>
-    $(document).on("click", ".submit", function() {
- alert("clicked");
-})
-</script>
+    </script>
 
 </body>
 
