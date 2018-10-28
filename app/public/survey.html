@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friend Finder</title>
-
+<!-- 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -131,8 +137,30 @@
                 <option>5</option>
             </select>
         </div>
-        <a class="submit btn btn-primary btn-lg" href="#" role="button">Submit</a>
+        <a class="submit btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" href="#" role="button">Submit</a>
+
+        <div id="myModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Your Match!!!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- bestMatch goes here -->
+                        <div class = "modalName"></div>
+                        <div class = "modalPicture"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
+
 
 
 
@@ -223,7 +251,7 @@
 
                         // holds total of all diff for each user
                         var totalArray = [];
-                                                
+
                         // position i = diff users
                         for (i = 0; i < numberUsers; i++) {
                             var userTotal = 0;
@@ -242,6 +270,34 @@
                             // console.log("totalArray inside loop", totalArray);
                         }
                         console.log("totalArray", totalArray);
+                        console.log(data);
+                        var maxDiff = 40;
+
+                        var bestMatch = {
+                            name: "",
+                            photo: "",
+                            data: ""
+                        }
+
+                        for (i = 0; i < totalArray.length; i++) {
+                            if (totalArray[i] <= maxDiff) {
+                                maxDiff = totalArray[i];
+                                bestMatch.name = data[i].name;
+                                bestMatch.data = data[i];
+
+
+                            }
+                        }
+                        console.log("bestmatch", bestMatch);
+                        $(".modalName").text(JSON.stringify(bestMatch.name));
+                        $(".modalPicture").text(JSON.stringify(bestMatch.photo));
+
+
+
+                        // for (i = 0; i < totalArray.length; i++) {
+                        //     if ((maxDiff - totalArray[i]) < maxdiff) {
+
+                        //     }
 
                     }
 
