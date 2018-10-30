@@ -16,6 +16,7 @@ var users = [
     },
     {
         routeName: "liz",
+        photo: "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi",
         name: "Liz",
         morning: 5,
         pizza: 5,
@@ -31,6 +32,7 @@ var users = [
     {
         routeName: "forest",
         name: "Forest",
+        photo: "https://img.huffingtonpost.com/asset/5b7fdeab1900001d035028dc.jpeg?cache=sixpwrbb1s&ops=1910_1000",
         morning: 3,
         pizza: 3,
         introvert: 3,
