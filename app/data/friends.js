@@ -1,6 +1,7 @@
 var users = [
     {
         routeName: "david",
+        photo: "https://www.petmd.com/sites/default/files/over-active-dog-211592482.jpg",
         name: "David",
         morning: 1,
         pizza: 1,

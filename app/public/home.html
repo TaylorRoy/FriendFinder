@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friend Finder</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -34,7 +35,8 @@
                 <input type="text" id="character-search" class="form-control">
                 <br>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="fa fa-search"></span>Search
+                    <button type="submit" class="btn btn-primary btn-md" id="search-btn" data-toggle="modal"
+                        data-target="#myModal"><span class="fa fa-search"></span>Search
                         User Data</button>
 
                 </div>
@@ -47,19 +49,40 @@
             </div>
             <div class="card-body">
                 <div class="card-body">
-                    <h2><strong>Name:</strong><span class="name">?</span></h2>
+                    <h2><strong>Name:</strong><span class="name"></span></h2>
                     <div class="stats">
-                        <h3><strong>Morning(5)/Night(1):</strong> <span class="morning">?</span></h3>
-                        <h3><strong>Pizza:</strong> <span class="pizza">?</span></h3>
-                        <h3><strong>Introver(5)/Extrovert(1):</strong> <span class="introvert">?</span></h3>
-                        <h3><strong>Environment:</strong> <span class="environment">?</span></h3>
-                        <h3><strong>Science(5)/Faith(1):</strong> <span class="science">?</span></h3>
-                        <h3><strong>Art:</strong> <span class="art">?</span></h3>
-                        <h3><strong>Book:</strong> <span class="book">?</span></h3>
-                        <h3><strong>Travel(5)/Home(1):</strong> <span class="travel">?</span></h3>
-                        <h3><strong>Coding:</strong> <span class="coding">?</span></h3>
-                        <h3><strong>Famous(5)/Loved(1):</strong> <span class="famous">?</span></h3>
+                        <h3><strong>Morning(5)/Night(1):</strong> <span class="morning"></span></h3>
+                        <h3><strong>Pizza:</strong> <span class="pizza"></span></h3>
+                        <h3><strong>Introver(5)/Extrovert(1):</strong> <span class="introvert"></span></h3>
+                        <h3><strong>Environment:</strong> <span class="environment"></span></h3>
+                        <h3><strong>Science(5)/Faith(1):</strong> <span class="science"></span></h3>
+                        <h3><strong>Art:</strong> <span class="art"></span></h3>
+                        <h3><strong>Book:</strong> <span class="book"></span></h3>
+                        <h3><strong>Travel(5)/Home(1):</strong> <span class="travel"></span></h3>
+                        <h3><strong>Coding:</strong> <span class="coding"></span></h3>
+                        <h3><strong>Famous(5)/Loved(1):</strong> <span class="famous"></span></h3>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sorry.</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modalAlert">
+                            <!-- no user message goes here -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -68,7 +91,7 @@
         <script type="text/javascript">
             $("#search-btn").on("click", function () {
                 var searchedCharacter = $("#character-search").val().trim();
-                
+
 
                 // // Using a RegEx Pattern to remove spaces from searchedCharacter
                 // // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
@@ -90,11 +113,10 @@
                             $(".travel").text(data.travel),
                             $(".coding").text(data.coding),
                             $(".famous").text(data.famous)
-                           
+
                     }
-                    else {
-                        $("#name").text("There are no users with that name.  Try another search.");
-                        $("#stats").hide();
+                        else {
+                        $(".modalAlert").text("There is no user with the name: " + searchedCharacter + " in our database.  Please try again.")
                     }
                 });
             });

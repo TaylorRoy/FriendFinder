@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friend Finder</title>
-<!-- 
+    <!-- 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 
@@ -26,7 +26,6 @@
         <h1 class="display-4">Friend Finder</h1>
         <p class="lead">Answer the following questions and we will match you with similar folks.</p>
         <hr class="my-4">
-        <p>It uses Express, Node and JavaScript for the server, and HTML, CSS, jQuery, and Javascript for the frontend.</p>
         <a class="btn btn-primary btn-lg" href="/" role="button">Return to homepage.</a>
 
     </div>
@@ -47,7 +46,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">How much do you like pizza?</label>
+            <label for="exampleFormControlSelect1">How much do you like pizza? 5 for a lot, 1 for not my fav.</label>
             <select class="pizza form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
@@ -67,7 +66,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Do you respect the environment?</label>
+            <label for="exampleFormControlSelect1">Do you respect the environment? 5 for sacred, 1 for who cares.</label>
             <select class="environment form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
@@ -87,8 +86,9 @@
                 <option>5</option>
             </select>
         </div>
+
         <div class="form-group">
-            <label for="exampleFormControlSelect1">How much do you enjoy art?</label>
+            <label for="exampleFormControlSelect1">How much do you enjoy art? 5 for amazing, 1 for whatevs.</label>
             <select class="art form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
@@ -98,7 +98,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">How often do you read books?</label>
+            <label for="exampleFormControlSelect1">How often do you read books? 5 for can't put them down, 1 for what's
+                a book.</label>
             <select class="book form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
@@ -118,7 +119,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">How much do you like coding?</label>
+            <label for="exampleFormControlSelect1">How much do you like coding? 5 for it rules, 1 for I am over it.</label>
             <select class="coding form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
@@ -149,9 +150,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- bestMatch goes here -->
-                        <div class = "modalName"></div>
-                        <div class = "modalPicture"></div>
+                        <!-- bestMatch data goes here -->
+                        <div class="modalName"></div>
+                        <div class="modalPicture"></div>
+                        <div class="modalMorning"></div>
+                        <div class="modalPizza"></div>
+                        <div class="modalIntrovert"></div>
+                        <div class="modalEnvironment"></div>
+                        <div class="modalScience"></div>
+                        <div class="modalArt"></div>
+                        <div class="modalBook"></div>
+                        <div class="modalTravel"></div>
+                        <div class="modalCoding"></div>
+                        <div class="modalFamous"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -284,20 +295,29 @@
                                 maxDiff = totalArray[i];
                                 bestMatch.name = data[i].name;
                                 bestMatch.data = data[i];
-
+                                bestMatch.photo = data[i].photo;
 
                             }
                         }
                         console.log("bestmatch", bestMatch);
-                        $(".modalName").text(JSON.stringify(bestMatch.name));
-                        $(".modalPicture").text(JSON.stringify(bestMatch.photo));
+                        console.log(bestMatch.photo);
+                        $(".modalName").text("Name:" + JSON.stringify(bestMatch.name));
 
+                        var image = $("<img>");
+                        image.attr("src", bestMatch.photo);
+                        $(".modalPicture").append(image);
+                        console.log('IMAGE: ', image);
 
-
-                        // for (i = 0; i < totalArray.length; i++) {
-                        //     if ((maxDiff - totalArray[i]) < maxdiff) {
-
-                        //     }
+                        $(".modalMorning").text("Morning:" + JSON.stringify(bestMatch.data.morning));
+                        $(".modalPizza").text("Pizza:" + JSON.stringify(bestMatch.data.pizza));
+                        $(".modalIntrovert").text("Introvert:" + JSON.stringify(bestMatch.data.introvert));
+                        $(".modalEnvironment").text("Environment:" + JSON.stringify(bestMatch.data.environment));
+                        $(".modalScience").text("Science:" + JSON.stringify(bestMatch.data.science));
+                        $(".modalArt").text("Art:" + JSON.stringify(bestMatch.data.art));
+                        $(".modalBook").text("Book:" + JSON.stringify(bestMatch.data.book));
+                        $(".modalTravel").text("Travel:" + JSON.stringify(bestMatch.data.travel));
+                        $(".modalCoding").text("Coding:" + JSON.stringify(bestMatch.data.coding));
+                        $(".modalFamous").text("Famous:" + JSON.stringify(bestMatch.data.famous));
 
                     }
 
